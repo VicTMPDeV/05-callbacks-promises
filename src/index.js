@@ -1,7 +1,12 @@
-import { saludar } from './js/componentes.js';
 import './styles.css';
+import { findHero } from "./js/callbacks";
 
+const heroId = 'capam';
 
-const nombre = 'Fernando';
-
-saludar( nombre );
+findHero( heroId, (err, hero) => {
+    if( err ){
+        console.error(err);
+    }else{
+        console.log(hero);
+    }
+});
