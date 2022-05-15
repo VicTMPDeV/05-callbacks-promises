@@ -16,7 +16,7 @@ findHeroCallback( heroId1, (err, hero) => {
     if( err ){
         console.error(err);
     }else{
-        console.log(hero);
+        console.log('Using One Callback: ', hero);
     }
     
 });
@@ -44,7 +44,7 @@ findHeroCallback(heroId1, (err, hero1) => {
             if( err ){ console.error(err); } //Si no existe hero3
             
             //Si todo va bien...
-            console.log(`Enviando a ${hero1.name} , ${hero2.name} y ${hero3.name} a la misión`);
+            console.log('Using Many Callbacks: ', `Enviando a ${hero1.name} , ${hero2.name} y ${hero3.name} a la misión`);
 
         })
         
@@ -53,21 +53,19 @@ findHeroCallback(heroId1, (err, hero1) => {
 });
 
 
-
-
-
 //PROMISE -> La respuesta será ASINCRONA
 //--------------------------------------
-// findHeroPromise(heroId1).then((hero) => {
+findHeroPromise(heroId1).then((hero) => {
 
-//     console.log(`Enviando a ${hero.name} a la misión`);
+    console.log('Using one Promise: ',`Enviando a ${hero.name} a la misión`);
 
-// });
+});
 
 
 //COMPROBACIÓN DE LA SINCRONÍA/ASINCRONÍA (Podemos observar qué se ejecuta antes, si este mensaje o el callback o la promesa)
 //---------------------------------------------------------------------------------------------------------------------------
 /* Los callbacks pueden bloquear la ejecución del programa mientras resuelve las peticiones, las promesas no bloquean la 
-ejecución del programa porque JS las saca de la cola de ejecución normal del programa */
+ejecución del programa porque JS las saca de la cola de ejecución normal del programa, y cuando están resueltas, las devuelve
+a la cola de ejecución normal del programa (ESTO ÚLTIMO ES IMPORTANTE, PORQUE JS NO ES MULTIHILO, COMO JAVA POR EJEMPLO*/
 
 console.log('Fin del Programa');
