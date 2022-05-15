@@ -1,18 +1,5 @@
 //PEQUEÑA FUENTE DE DATOS PARA PROBAR LOS CALLBACKS
-const heroes = {
-    capam: {
-        name: 'Capitán América',
-        power: 'Soldado de USA dopado hasta las trancas'
-    },
-    iron: {
-        name: 'Iron Man',
-        power: 'Multimillonario de USA con una armadura tela de chula'
-    },
-    spider: {
-        name: 'Spiderman',
-        power: 'Mutante picado por una araña'
-    }
-}
+import { heroes } from "./heroes"; 
 
 export const findHero = ( id, callback ) => {
     const hero = heroes[id];
