@@ -2,7 +2,9 @@
 import { heroes } from "./heroes"; 
 
 export const findHero = ( id, callback ) => {
+    
     const hero = heroes[id];
+    
     if(hero){
         callback(null, hero);
     }else{
