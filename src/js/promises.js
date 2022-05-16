@@ -16,3 +16,27 @@ export const findHero = (id) => {
     }); 
 
 }
+
+//FUNCIONES PARA USAR CON Promise.race
+//------------------------------------
+
+const slowPromise = new Promise( (resolve, reject ) => {
+    setTimeout(()=> resolve('Promesa Lenta'), 2000);
+});
+
+const normalPromise = new Promise( (resolve, reject ) => {
+    setTimeout(()=> resolve('Promesa Normal'), 1500);
+});
+
+const fastPromise = new Promise( (resolve, reject ) => {
+    setTimeout(()=> resolve('Promesa Rápida'), 1000);
+});
+
+//OTRA MANERA DE EXPORTAR FUNCIONALIDADES (COMPONENTES) EN BLOQUE
+//---------------------------------------------------------------
+
+export {
+    slowPromise,
+    normalPromise,
+    fastPromise
+}
