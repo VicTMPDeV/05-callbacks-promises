@@ -1,5 +1,6 @@
 import { heroes } from "./heroes"; 
 
+//SIN ASYNC
 export const findHero = (id) => {
 
     // Paso 1: Pido el elemento que quiero obtener de una fuente externa.
@@ -16,6 +17,25 @@ export const findHero = (id) => {
     }); 
 
 }
+
+//CON ASYNC
+/* Transformo la función a una función ASÍNCRONA.
+Esto quiere decir que al poner async, por defecto estaremos devolviendo una nueva Promise.
+Es básicamente azúcar sintáctico para escribir menos líneas. */
+export const findHeroAsync = async(id) => { 
+
+    const hero = heroes[id];        
+
+    if(hero){
+        return hero;
+    }else{
+        throw `No existe un héroe con el id ${id}`;
+        // throw Error(`No existe un héroe con el id ${id}`); //DA MÁS INFORMACIÓN
+    }
+  
+}
+
+
 
 //FUNCIONES PARA USAR CON Promise.race
 //------------------------------------
