@@ -1,11 +1,14 @@
-import { findHero, findHeroAsync } from './js/promises';
+import { getHeroesArray } from "./js/await";
 
-//Usando Promise clásico
-findHero('capa')
-    .then( hero => console.log(hero))
-    .catch( hero=> console.warn(hero));
+console.time('EXECUTION TIME');
+// ESTRUCTURA PARA await.js EN EL CASO 1.
+//-----------------------------------------------
+// const heroes = getHeroesArray();
+// console.table(heroes);
 
-//Usando Async
-findHeroAsync('iro')
-    .then(hero => console.log(hero))
-    .catch(hero => console.warn(hero));
+// ESTRUCTURA PARA await.js EN EL RESTO DE CASOS.
+//-----------------------------------------------
+getHeroesArray().then( heroes => {
+    console.table(heroes);
+    console.timeEnd('EXECUTION TIME');
+});
