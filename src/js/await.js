@@ -40,7 +40,7 @@ export const getHeroesArray = async () => {
     
     // 2.
     //------------------------------------------------------------------------------------------------------------------------------------
-    // for (const id of heroesIds) {
+    // for (const id of heroesIds) { //TAMBIÉN PODRÍA UTILIZAR for await (const id of heroesIds) { ... AHORRÁNDOME EL AWAIT DESPUÉS EN LA LÍNEA DE ABAJO...
     //     const hero = await findHeroAsync(id); //CUIDADO CON USAR EL AWAIT... PORQUE VA A ESPERAR EL RESULTADO DE LA EJECUCIÓN Y LA EJECUCIÓN SE VA A PARAR JUSTO AHÍ HASTA QUE SE RESUELVA
     //     heroesArr.push(hero);
     // }
@@ -73,7 +73,33 @@ export const getHeroesArray = async () => {
     // 4. 
     //------------------------------------------------------------------------------------------------------------------------------------
     /* LO MISMO QUE EN 3, PERO DE UNA MANERA MÁS ELEGANTE  */
-    return await Promise.all(heroesIds.map( findHeroAsync ));
+    // return await Promise.all(heroesIds.map( findHeroAsync ));
 
-    
+}
+
+/* MANEJO DE EXCEPCIONES CON EL AWAIT */
+
+export const getHeroesAwait = async(id) => {
+
+    try{
+
+        const hero = await findHeroAsync(id);
+        return hero;
+
+    }catch(err){
+
+        console.log('CATCH!!!');
+        // throw err; //OPCIÓN 1 -> RETORNO EL ERROR
+        //OPCIÓN 2 -> RETORNO UN OBJETO LITERAL POR DEFECTO
+        return {
+            name: 'No One',
+            power: 'No One'
+        }
+        /* EN LA OPCIÓN 2, A PESAR DE QUE SE DISPARA EL CATCH 
+        ESTOY RECIBIENDO UN OBJETO Y EL CÓDIGO SE EJECUTA POR LA 
+        VÍA DEL THEN (dentro de index.js) EN LUGAR DE POR LA 
+        VÍA DEL CATCH
+        */
+    }
+
 }
